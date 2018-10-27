@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block header %}
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">1</h1>
+        </div>
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">2</h1>
+        </div>
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">3</h1>
+        </div>
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">4</h1>
+        </div>
+        <div class="col-2 border rounded">
+            <h1 class="text-center">5</h1>
+        </div>
+        <div class="col-2 border rounded">
+            <h1 class="text-center">6</h1>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+    <form class="form-horizontal" method="POST" action="/config_columns">
+        <div class="row">
+            <div class="form-group col-sm-12" align="center">
+                <label class="control-label" for="new_table_name"><strong>Target Table Name :</strong></label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="new_table_name" name="new_table_name" placeholder="Enter Table Name..." required>
+                </div>
+                <div class="col-sm-3 mt-3">
+                    <input type="checkbox" class="form-control" id="check_table" name="check_table" value="Fact">[Checked, If it's a Fact table.]
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for detail in details %}
+            <div class="form-group col-sm-4 border">
+                <label class="control-label mt-3" for="new_col_name"><strong>Column Name :</strong></label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="new_col_name" name="new_col_name" value="{{ detail[0] }}" placeholder="Enter Column Name..." required>
+                </div>
+                <label class="control-label" for="new_data_type"><strong>Column Data Type :</strong></label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="new_data_type" name="new_data_type" required>
+                        <option value="{{ detail[1] }}" selected>{{ detail[1] }}</option>
+                        <option value="NUMBER">NUMBER</option>
+                        <option value="VARCHAR2">VARCHAR2</option>
+                    </select>
+                </div>
+                {% if detail[1] != 'DATE' %}
+                <label class="control-label" for="new_data_length"><strong>Column Data Size :</strong></label>
+                <div class="col-sm-10 mb-3">
+                    <input type="text" class="form-control" id="new_data_length" name="new_data_length" value="{{ detail[2] }}" placeholder="Enter Data Size..." required>
+                    {% else %}
+                    <input type="hidden" class="form-control" id="new_data_length" name="new_data_length" value="0" >
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row mt-3">
+            <div class="form-group col-sm-12" align="center">
+                <input class="btn btn-primary" type="submit" value="Transform">
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

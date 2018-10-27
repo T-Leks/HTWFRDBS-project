@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block header %}
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">1</h1>
+        </div>
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">2</h1>
+        </div>
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">3</h1>
+        </div>
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">4</h1>
+        </div>
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">5</h1>
+        </div>
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">6</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5" align="center">
+    <div class="row justify-content-center">
+        <h2>Create a {{ filename }} file Success.</h2>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <form method="POST" action="/download_file">
+            <input class="btn btn-success text-center" type="submit" value="Download">
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block header %}
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">1</h1>
+        </div>
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">2</h1>
+        </div>
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">3</h1>
+        </div>
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">4</h1>
+        </div>
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">5</h1>
+        </div>
+        <div class="col-2 border rounded bg-success">
+            <h1 class="text-center">6</h1>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        {% for key, value in stats.items() %}
+        <h1 style="color:red;">{{ value }}</h1>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
